@@ -1,0 +1,32 @@
+<style>
+    body{
+        background-color: #f5f0e8;
+        text-align: center;
+    }
+
+    hi{
+        color: #9b1b1b;
+        font-size: 50px;
+    }
+
+    button{
+        background-color: #9b1b1b;
+        color: white;
+        padding: 15px 30px;
+        font-size: 18px;
+    }
+</style>
+
+<h1>京大神社</h1>
+<p>吉田の地に現れる、四日間だけの社。</p>
+<button onclick="drawOmikuji()">おみくじを引く</button>
+<p id="result"></p>
+<script>
+    function drawOmikuji(){
+        const fortunes = ["大吉", "中吉", "小吉", "吉", "末吉", "凶"];
+
+        const randomNumber = Math.floor(Math.random() * fortunes.length);
+
+        document.getElementById("result").textContent = fortunes[randomNumber];
+    }
+</script>
