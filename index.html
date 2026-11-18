@@ -1,21 +1,68 @@
-<style>
-    body{
-        background-color: #f5f0e8;
-        text-align: center;
-    }
-
-    hi{
-        color: #9b1b1b;
-        font-size: 50px;
-    }
-
-    button{
-        background-color: #9b1b1b;
-        color: white;
-        padding: 15px 30px;
-        font-size: 18px;
-    }
-</style>
-
-<h1>えぬゑふ神社</h1>
-<p>少女コーディング中　coming soon...</p>
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#801e20">
+  <meta name="description" content="京大神社 電脳御籤。吉田の地に現れる、四日間だけの社。あなたの今日の運勢を占おう。">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="京大神社｜電脳御籤">
+  <meta property="og:description" content="吉田の地に現れる、四日間だけの社。あなたの運勢を占おう。">
+  <meta property="og:url" content="https://nf-jinja.vercel.app/">
+  <title>京大神社｜電脳御籤</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="site-shell">
+    <header class="site-header"><span class="header-mark">京大神社</span><span class="header-year">NOVEMBER FESTIVAL 2026</span></header>
+    <main id="main">
+      <section class="screen active" id="home" aria-labelledby="home-title">
+        <div class="eyebrow"><span class="line"></span>吉田の地に現れる、四日間だけの社<span class="line"></span></div>
+        <div class="torii" aria-hidden="true"><span class="torii-top"></span><span class="torii-cross"></span><span class="torii-leg left"></span><span class="torii-leg right"></span><span class="torii-center"></span></div>
+        <p class="small-caps">電 脳 御 籤</p>
+        <h1 id="home-title">京大神社</h1>
+        <p class="home-lead">運命の一籤、ここに。</p>
+        <p class="home-copy">学問の都、吉田の杜より。<br>今日のあなたに、小さな神託を。</p>
+        <button class="primary-button" id="start-btn">御籤を引く <span aria-hidden="true">↗</span></button>
+        <p class="microcopy">無料で何度でもお楽しみいただけます</p>
+      </section>
+      <section class="screen" id="choose" aria-labelledby="choose-title" hidden>
+        <p class="section-no">其の壱</p><p class="small-caps">CHOOSE YOUR FORTUNE</p>
+        <h2 id="choose-title">御籤をお選びください</h2>
+        <p class="section-desc">あなたにぴったりの御籤を、ひとつ。</p>
+        <div class="category-grid">
+          <button class="category-card" data-category="university"><span class="category-icon" aria-hidden="true">✦</span><span class="category-number">壱</span><strong>大学生みくじ</strong><span>単位・研究・就活・恋愛</span><span class="card-arrow" aria-hidden="true">↗</span></button>
+          <button class="category-card" data-category="student"><span class="category-icon" aria-hidden="true">✎</span><span class="category-number">弐</span><strong>学生みくじ</strong><span>小・中・高校生向け</span><span class="card-arrow" aria-hidden="true">↗</span></button>
+          <button class="category-card" data-category="general"><span class="category-icon" aria-hidden="true">❀</span><span class="category-number">参</span><strong>一般みくじ</strong><span>仕事・暮らし・人との縁</span><span class="card-arrow" aria-hidden="true">↗</span></button>
+        </div>
+        <button class="text-button" data-go="home">← はじめに戻る</button>
+      </section>
+      <section class="screen" id="drawing" aria-labelledby="drawing-title" hidden>
+        <p class="section-no">其の弐</p><h2 id="drawing-title">運命を、ひらく。</h2>
+        <div class="drawing-visual" aria-hidden="true"><div class="omikuji-box"><div class="box-label">御神籤</div><div class="paper-slip">運</div></div></div>
+        <p class="drawing-message" id="drawing-message" role="status">神託を授かっています…</p>
+      </section>
+      <section class="screen" id="result" aria-labelledby="result-title" hidden>
+        <p class="section-no">其の参</p><p class="small-caps">YOUR FORTUNE</p><h2 id="result-title">御神籤</h2>
+        <div class="fortune-paper" id="fortune-paper">
+          <div class="paper-top"><span>京大神社</span><span id="fortune-number">第壱番</span></div>
+          <div class="fortune-type" id="fortune-type">大学生みくじ</div>
+          <div class="fortune-rank" id="fortune-rank">大吉</div>
+          <div class="fortune-divider"><span>✦</span></div>
+          <p class="fortune-summary" id="fortune-summary"></p>
+          <div class="fortune-details" id="fortune-details"></div>
+          <div class="oracle"><span>神 託</span><p id="fortune-oracle"></p></div>
+          <p class="lucky" id="fortune-lucky"></p>
+          <div class="paper-bottom">吉田の杜より、幸あれ。</div>
+        </div>
+        <div class="result-actions"><button class="primary-button" id="share-btn">𝕏 で結果をシェア ↗</button><button class="secondary-button" id="copy-btn">結果をコピー</button><button class="text-button" id="again-btn">↻ もう一度引く</button></div>
+        <p class="disclaimer">※この御籤は学園祭の創作企画です。結果は娯楽としてお楽しみください。</p>
+      </section>
+    </main>
+    <footer><span>京大神社 · NF 2026</span><span>吉田の杜より、幸あれ。</span></footer>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
